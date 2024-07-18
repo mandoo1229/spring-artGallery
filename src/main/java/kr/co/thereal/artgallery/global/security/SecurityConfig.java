@@ -23,10 +23,12 @@ public class SecurityConfig {
     private JwtTokenProvider jwtTokenProvider;
     private TokenService tokenService;
 
+    // password 암호화
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     @Bean
     AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws  Exception {
         return authenticationConfiguration.getAuthenticationManager();

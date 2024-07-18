@@ -2,7 +2,7 @@ package kr.co.thereal.artgallery.domain.admin.service;
 
 import kr.co.thereal.artgallery.domain.admin.entity.Admin;
 import kr.co.thereal.artgallery.domain.admin.repository.AdminRepository;
-import kr.co.thereal.artgallery.global.service.UserRole;
+import kr.co.thereal.artgallery.global.security.UserRole;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -22,8 +22,8 @@ public class AdminSecurityService implements UserDetailsService {
     private AdminRepository adminRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String adminId) throws UsernameNotFoundException {
-        Optional<Admin>  _admin = this.adminRepository.findByAdminId(adminId);
+    public UserDetails loadUserByUsername(String userid) throws UsernameNotFoundException {
+        Optional<Admin>  _admin = this.adminRepository.findByUserid(userid);
 
         if(_admin.isEmpty()) {
             throw new UsernameNotFoundException("가입되어있지 않는 아이디 입니다.");
@@ -33,8 +33,8 @@ public class AdminSecurityService implements UserDetailsService {
         List<SimpleGrantedAuthority> authorityList = new ArrayList<>();
 
         authorityList.add(new SimpleGrantedAuthority(UserRole.ADMIN.getValue()));
-        System.out.println(admin.getAdminId());
+        System.out.println(admin.getUserid());
 
-        return new User(admin.getAdminId(), admin.getPassword(), authorityList);
+        return new User(admin.getUserid(), admin.getPassword(), authorityList);
     }
 }

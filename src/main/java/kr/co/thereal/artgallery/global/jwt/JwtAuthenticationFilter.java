@@ -42,7 +42,7 @@ public class JwtAuthenticationFilter extends GenericFilter {
 
             System.out.println("토큰 유효");
 
-            AdminGetAdminIdDto adminGetAdminIdDto = AdminGetAdminIdDto.builder().adminId(jwtTokenProvider.getUserPk(token)).build();
+            AdminGetAdminIdDto adminGetAdminIdDto = AdminGetAdminIdDto.builder().userid(jwtTokenProvider.getUserPk(token)).build();
             System.out.println("adminGetAdminIdDto" + adminGetAdminIdDto);
             AdminGetRoleDto adminGetRoleDto = AdminGetRoleDto.builder().role(jwtTokenProvider.getAdminRole(token)).build();
             System.out.println("adminGetRoleDto" + adminGetRoleDto);

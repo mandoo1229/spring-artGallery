@@ -1,4 +1,4 @@
-package kr.co.thereal.artgallery.global.service;
+package kr.co.thereal.artgallery.global.security;
 
 import lombok.Getter;
 

@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class AdminGetAdminIdDto {
-    public String userid;
+public class AdminGetIdDto {
+    private Long id;
 }
