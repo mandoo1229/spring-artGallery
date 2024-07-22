@@ -2,6 +2,19 @@ server:
   port: 8080
 
 spring:
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+  thymeleaf:
+    cache: false
+
+
+  h2:
+    console:
+      enabled: true
+
   datasource:
 #    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/art_gallery?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
@@ -9,8 +22,8 @@ spring:
     password: Fngml2tp^^
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-  thymeleaf:
-    cache: false
+
+#    prefix: file:src/main/resources/templates
 
   jpa:
     #    database-platform: org.hibernate.dialect.MySQL8Dialect
