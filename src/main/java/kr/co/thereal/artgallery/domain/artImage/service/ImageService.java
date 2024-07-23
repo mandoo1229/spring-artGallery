@@ -1,7 +1,6 @@
 package kr.co.thereal.artgallery.domain.artImage.service;
 
 import kr.co.thereal.artgallery.domain.artImage.Repository.ImageRepository;
-import kr.co.thereal.artgallery.domain.artImage.config.WebMvcConfig;
 import kr.co.thereal.artgallery.domain.artImage.entity.ImageEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
