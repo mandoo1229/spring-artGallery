@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      th:fragment="AsideFragment">
+<head>
+    <meta charset="UTF-8">
+    <title>View</title>
+</head>
+<body>
+
+<div>이미지 출력</div>
+
+<div th:each="imageFile: ${images}">
+    <img src="|/images/${imageFile.id}}" />
+    <p th:text="${images}"></p>
+</div>
+
+</body>
+</html>

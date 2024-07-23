@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      th:fragment="AsideFragment">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload</title>
+</head>
+<body>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+
+  <h3>단일 파일</h3>
+  <input type="file" name="image">
+
+
+  <h3>다중 파일</h3>
+  <input type="file" multiple="multiple" name="images">
+
+  <input type="submit">
+</form>
+
+</body>
+</html>

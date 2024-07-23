@@ -21,9 +21,13 @@ spring:
     username: root
     password: Fngml2tp^^
     driver-class-name: com.mysql.cj.jdbc.Driver
+# 파일 용량
+  servlet:
+    multipart:
+      max-file-size: 1MB
+      max-request-size: 10MB
 
-
-#    prefix: file:src/main/resources/templates
+  #    prefix: file:src/main/resources/templates
 
   jpa:
     #    database-platform: org.hibernate.dialect.MySQL8Dialect
@@ -49,3 +53,7 @@ springdoc:
   default-consumes-media-type: application/json;charset=UTF-8
   default-produces-media-type: application/json;charset=UTF-8
   paths-to-match: /api/**
+
+logging:
+  file:
+    path: /Users/real/Desktop/file/image/
