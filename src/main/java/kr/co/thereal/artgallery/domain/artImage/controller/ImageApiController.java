@@ -10,11 +10,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
-//@Controller
 @RestController
 @RequiredArgsConstructor
-@Controller
 @RequestMapping("api")
 public class ImageApiController {
 
@@ -32,32 +31,13 @@ public class ImageApiController {
     }
 
     @GetMapping("/view")
-    public List<ImageEntity> view() {
-        System.out.println("이미지" + imageRepository.findAll());
+    public List<ImageEntity> viewList() {
         return imageRepository.findAll();
     }
 
-
-//    @GetMapping("/images/{imageId}")
-//    @ResponseBody
-//    public Resource downloadImage(@PathVariable("imageId") Long id, Model model) throws IOException {
-//
-//        ImageEntity image = imageRepository.findById(id).orElse(null);
-//        System.out.println("이미지 " + image);
-//        return new UrlResource("file:" + image.getSavedPath());
-//    }
-//
-//    @GetMapping("/attach/{id}")
-//    public ResponseEntity<Resource> downloadAttach(@PathVariable Long id) throws MalformedURLException {
-//        ImageEntity image = imageRepository.findById(id).orElse(null);
-//
-//        UrlResource resource = new UrlResource("file:" + image.getSavedPath());
-//
-//        String encodedFileName = UriUtils.encode(image.getOrgNm(), StandardCharsets.UTF_8);
-//
-//        String contentDisposition = "attachment; filename=\"" + encodedFileName + "\"";
-//
-//        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, contentDisposition).body(resource);
-//    }
+    @GetMapping("/view/{id}")
+    public Optional<ImageEntity> viewById(@PathVariable Long id) {
+        return imageRepository.findById(id);
+    }
 
 }

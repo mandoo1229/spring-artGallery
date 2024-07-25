@@ -10,20 +10,17 @@ import lombok.*;
 public class ImageEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "file_id")
+    @Column(name = "seq")
     private Long id;
 
     private String orgNm;
 
     private String saveNm;
 
-//    private String savedPath;
-//
     @Builder
-    public ImageEntity(Long id, String orgNm, String saveNm, String savedPath){
+    public ImageEntity(Long id, String orgNm, String saveNm){
         this.id = id;
         this.orgNm = orgNm;
         this.saveNm = saveNm;
-//        this.savedPath = savedPath;
     }
 }

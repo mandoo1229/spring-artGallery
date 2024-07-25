@@ -43,7 +43,6 @@ public class ImageService {
         ImageEntity image = ImageEntity.builder()
                 .orgNm(originName)
                 .saveNm(savedName)
-//                .savedPath(savedPath)
                 .build();
 
         ImageEntity savedImage = imageRepository.save(image);
