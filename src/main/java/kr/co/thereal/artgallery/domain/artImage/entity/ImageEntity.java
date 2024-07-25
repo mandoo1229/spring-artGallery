@@ -17,13 +17,13 @@ public class ImageEntity {
 
     private String saveNm;
 
-    private String savedPath;
+//    private String savedPath;
 //
     @Builder
     public ImageEntity(Long id, String orgNm, String saveNm, String savedPath){
         this.id = id;
         this.orgNm = orgNm;
         this.saveNm = saveNm;
-        this.savedPath = savedPath;
+//        this.savedPath = savedPath;
     }
 }
