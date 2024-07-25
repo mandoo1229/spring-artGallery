@@ -36,6 +36,7 @@ public class ImageService {
         // 파일을 불러올 때 사용할 파일 경로
         String savedPath = imageDir + savedName;
 
+        // 로컬에 이미지를 저장
         File destFile = new File(savedPath);
         file.transferTo(destFile);
 
@@ -45,12 +46,8 @@ public class ImageService {
                 .savedPath(savedPath)
                 .build();
 
-//        file.transferTo(new File(savedName));
-
-
-
         ImageEntity savedImage = imageRepository.save(image);
-        System.out.println("파일" + savedImage);
+//        System.out.println("파일" + savedImage);
 
         return savedImage.getId();
 

@@ -4,7 +4,6 @@ import kr.co.thereal.artgallery.domain.artImage.Repository.ImageRepository;
 import kr.co.thereal.artgallery.domain.artImage.entity.ImageEntity;
 import kr.co.thereal.artgallery.domain.artImage.service.ImageService;
 import lombok.RequiredArgsConstructor;
-import org.apache.tomcat.util.buf.UriUtil;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
@@ -20,8 +19,10 @@ import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
-@Controller
+//@Controller
+@RestController
 @RequiredArgsConstructor
+@RequestMapping("api")
 public class ImageController {
 
     private final ImageService imageService;
@@ -29,7 +30,7 @@ public class ImageController {
 
     @GetMapping("/upload")
     public String imageUploadForm() {
-        return "image/upload";
+        return "image/Upload";
     }
 
     @PostMapping("/upload")
@@ -39,21 +40,22 @@ public class ImageController {
         for (MultipartFile multipartFile : images) {
             imageService.saveImage(multipartFile);
         }
-        return "redirect:/upload";
+        return "redirect:/view";
     }
 
     @GetMapping("/view")
-    public String view(Model model) {
-        List<ImageEntity> images = imageRepository.findAll();
-        model.addAttribute("images", images);
-        return "image/View";
+    public List<ImageEntity> view() {
+        System.out.println("이미지" + imageRepository.findAll());
+        return imageRepository.findAll();
     }
+
 
     @GetMapping("/images/{imageId}")
     @ResponseBody
     public Resource downloadImage(@PathVariable("imageId") Long id, Model model) throws IOException {
 
         ImageEntity image = imageRepository.findById(id).orElse(null);
+        System.out.println("이미지 " + image);
         return new UrlResource("file:" + image.getSavedPath());
     }
 
