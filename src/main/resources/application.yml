@@ -1,6 +1,8 @@
 server:
   port: 8080
 
+jwt:
+  secret: 8294cdf937a12aade7ae45c0f3ddec08f59a0e496f0a6532b00a67efb4c5e38d6ac3f631cc8f856fb66a6f95d82f3bf47522b999702cf086babb66aa4b689baf
 spring:
   devtools:
     livereload:
@@ -13,6 +15,7 @@ spring:
 
 
 
+
   h2:
     console:
       enabled: true
@@ -21,6 +24,8 @@ spring:
     hikari:
       driver-class-name: com.mysql.cj.jdbc.Driver
       jdbc-url: jdbc:mysql://localhost:3306/art_gallery?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+
+#      jdbc-url: jdbc:mysql://localhost:3306/art_gallery?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
       username: root
       password: Fngml2tp^^
 
