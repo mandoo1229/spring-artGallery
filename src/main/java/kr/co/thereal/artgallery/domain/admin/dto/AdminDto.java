@@ -6,10 +6,8 @@ import java.time.LocalDate;
 
 @Data
 public class AdminDto {
-
-    private String adminId;
+    private String loginId;
     private String password;
-    private String adminName;
-    private LocalDate createdDate;
-
+    private String name;
+    private LocalDate createDate;
 }

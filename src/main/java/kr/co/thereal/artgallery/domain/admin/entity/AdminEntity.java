@@ -6,40 +6,37 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 @Entity
-@Table(name = "Admin")
+@Table(name = "admin")
 @NoArgsConstructor
 @Data
 public class AdminEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "id")
     private Long id;
 
-    private String adminId;
+    @Column(nullable = false, length = 30, unique = true, updatable = false)
+    private String loginId;
 
+    @Column(nullable = false, length = 100)
     private String password;
 
-    private String adminName;
+    @Column(nullable = false, length = 10)
+    private String name;
 
     @CreatedDate
-    private Timestamp createdDate;
+    private LocalDate createdDate;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "adminEntity")
-    private List<AdminRole> adminRoles;
 
     @Builder
-    public AdminEntity(Long id, String adminId, String password, String adminName, Timestamp createdDate, Set<AdminRole> adminRoles) {
+    public AdminEntity(Long id, String loginId, String password, String name, LocalDate createdDate) {
         this.id = id;
-        this.adminId = adminId;
+        this.loginId = loginId;
         this.password = password;
-        this.adminName = adminName;
+        this.name = name;
         this.createdDate = createdDate;
-        this.adminRoles = null;
     }
 }
