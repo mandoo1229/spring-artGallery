@@ -4,6 +4,7 @@ import jakarta.transaction.Transactional;
 import kr.co.thereal.artgallery.domain.admin.dto.AdminDto;
 import kr.co.thereal.artgallery.domain.admin.entity.AdminEntity;
 import kr.co.thereal.artgallery.domain.admin.repository.AdminRepository;
+import kr.co.thereal.artgallery.global.exception.InvalidInputException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,19 +20,26 @@ public class AdminService {
     회원가입
      */
 
+//    public String signUp(AdminDto dto) {
+//        adminRepository.findByLoginId(dto.getLoginId())
+//                        .orElseThrow(()-> new InvalidInputException("loginId", "중복입니다"));
+//
+//
+//        AdminEntity adminEntity = dto.toEntity();
+//
+//
+//        adminRepository.save(adminEntity);
+//        return "가입 완성";
+//    }
+
+
     public String signUp(AdminDto dto) {
-        Optional<AdminEntity> findAdmin = adminRepository.findByLoginId(dto.getLoginId());
-        if (findAdmin.isPresent()) {
-            return "중복된 ID입니다.";
-        }
+        adminRepository.findByLoginId(dto.getLoginId())
+                .ifPresent(admin -> {
+                    throw new InvalidInputException("loginId", "중복입니다");
+                });
 
-        AdminEntity adminEntity = AdminEntity.builder()
-                .loginId(dto.getLoginId())
-                .password(dto.getPassword())
-                .name(dto.getName())
-                .createdDate(dto.getCreateDate())
-                .build();
-
+        AdminEntity adminEntity = dto.toEntity();
         adminRepository.save(adminEntity);
         return "가입 완성";
     }
