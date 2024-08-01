@@ -2,7 +2,6 @@ package kr.co.thereal.artgallery.domain.admin.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
-import kr.co.thereal.artgallery.domain.admin.entity.AdminEntity;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -25,12 +24,4 @@ public class AdminDto {
     private String name;
     private LocalDate createDate;
 
-    public AdminEntity toEntity() {
-        return AdminEntity.builder()
-                .loginId(this.getLoginId())
-                .password(this.getPassword())
-                .name(this.getName())
-                .createdDate(this.getCreateDate())
-                .build();
-    }
 }
