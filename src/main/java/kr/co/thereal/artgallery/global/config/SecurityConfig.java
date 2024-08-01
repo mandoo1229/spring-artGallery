@@ -30,7 +30,7 @@ public class SecurityConfig {
                         -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(request-> request
                         .requestMatchers("/api/view/").anonymous()
-                        .requestMatchers("/api/view/**").hasRole("ADMIN")
+                        .requestMatchers("/api/view/**").hasRole("MEMBER")
                         .anyRequest().permitAll()
                 )
                 .addFilterBefore(
@@ -39,6 +39,7 @@ public class SecurityConfig {
                 );
         return http.build();
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
