@@ -27,7 +27,7 @@ spring:
 
 #      jdbc-url: jdbc:mysql://localhost:3306/art_gallery?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
       username: root
-      password: Fngml2tp^^
+      password: 
 
       maximum-pool-size: 10
       connection-timeout: 5000
